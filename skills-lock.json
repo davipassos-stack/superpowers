@@ -2,7 +2,7 @@
   "version": 2,
   "skills": {
     "design-taste-frontend": {
-      "source": "Leonxlnx/taste-skill",
+      "source": "davipassos-stack/taste-skill",
       "commit": "952435f63acece7d2fcb4b4d3c1786c1c43603e0",
       "sourceType": "github",
       "skillPath": "skills/taste-skill/SKILL.md",
