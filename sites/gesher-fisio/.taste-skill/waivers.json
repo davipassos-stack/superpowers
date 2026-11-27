@@ -1,0 +1,3 @@
+[
+  { "check": "phone-number", "target": "a.link.link--icon", "reason": "the client's own WhatsApp number, published on gesherfisio.com.br and given as the booking channel; the check's fix allows a number the brief gives" }
+]

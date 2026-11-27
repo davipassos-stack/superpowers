@@ -1,0 +1,161 @@
+/* Gesher: page CSS only for what the kit lacks: the client's logo size, the visuals built as live UI (the triage, the
+   four step screens, the exercise library) and the booking panel on the surface ground (references/system.md). */
+
+/* the client's logo (a two-line lockup) instead of the dealt mark */
+.nav__logo img { height: 34px; width: auto; }
+@media (max-width: 639px) { .nav__logo img { height: 28px; } }
+.closing__links .nav__logo img { height: 40px; }
+
+/* a list row's description: text people read, 16px in ink, told apart from the name by weight */
+.rows .rows__name small { display: block; margin-top: var(--s-1); font-weight: 400; font-size: var(--t-body); line-height: 1.5; color: var(--ink); }
+.rows--esp > li { padding-block: var(--s-3); }
+
+/* the triage: a card on the surface ground holding the four questions, then its answer in the same box */
+#especialidades .grid > .span-6 { align-self: stretch; display: flex; }
+.triage { --c-pad: var(--s-7); flex: 1; background: var(--p-surface); border: 0; border-radius: var(--r-lg); padding: var(--s-7); display: flex; flex-direction: column; gap: var(--s-5); }
+.triage__form { display: grid; gap: var(--s-5); }
+.triage__form > h3 { font: 500 var(--t-card)/1.3 var(--font-text); letter-spacing: -0.01em; }
+.triage__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); }
+.triage .field { align-content: start; }
+.triage .field select { background-color: var(--p-bg); }
+.triage__result { flex: 1; display: grid; align-content: start; min-height: 168px; padding: var(--s-5); border-radius: var(--r-md); background: var(--p-bg); outline: none; }
+.triage__empty { color: var(--ink); max-width: 44ch; }
+.triage__empty[hidden], .triage__answer[hidden] { display: none; }
+.triage__answer { display: grid; gap: var(--s-2); align-content: start; }
+.triage__answer > h4 { font: 500 var(--t-card)/1.3 var(--font-text); letter-spacing: -0.01em; }
+.triage__answer > p:not(.t-label) { color: var(--ink); }
+.triage__answer > .link { justify-self: start; margin-top: var(--s-2); }
+.triage__result.is-urgent .triage__answer > h4 { color: #a3261c; }
+.triage__foot { margin-top: auto; }
+@media (max-width: 639px) {
+  .triage { padding: var(--s-5); gap: var(--s-4); }
+  .triage__grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-3); }
+  /* on a phone the answer box shows up only with an answer in it */
+  .triage__result { min-height: 0; }
+  .triage__result:has(> .triage__answer[hidden]) { display: none; }
+  .rows--esp > li { padding-block: var(--s-2); }
+}
+
+/* the four step screens of the pinned chapters: small app windows on the surface ground */
+#como-funciona .mo-pc__visual--lit { background: var(--p-surface); }
+.gx-app { width: min(100%, 440px); background: var(--p-bg); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--s-5); display: grid; gap: var(--s-4); text-align: left; }
+.gx-app__head { display: flex; align-items: center; gap: var(--s-3); padding-bottom: var(--s-3); border-bottom: 1px solid var(--line); }
+.gx-app__head img { width: 24px; height: 24px; flex: none; }
+.gx-app__title { font: 500 var(--t-body)/1.3 var(--font-text); color: var(--ink); }
+.gx-app__meta { margin-left: auto; font-size: var(--t-label); color: var(--muted); text-align: right; }
+.gx-chat { display: grid; gap: var(--s-3); }
+.gx-msg { max-width: 84%; padding: var(--s-3) var(--s-4); border-radius: var(--r-md); background: var(--p-surface); font-size: var(--t-small); line-height: 1.45; color: var(--ink); }
+.gx-msg--me { justify-self: end; background: #d9f2df; color: #0f3d24; }
+.gx-check { display: grid; gap: 0; }
+.gx-check > li { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) 0; border-bottom: 1px solid var(--line); font-size: var(--t-body); color: var(--ink); }
+.gx-check > li:last-child { border-bottom: 0; color: var(--muted); }
+.gx-check > li::before { content: ""; width: 18px; height: 18px; flex: none; border-radius: 50%; border: 1.5px solid var(--line-strong); }
+.gx-check > li.is-done::before { border-color: var(--action); background: var(--action) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.2 6.8 11 12 5.5' fill='none' stroke='%23f7f9f8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat; }
+.gx-days { display: grid; gap: var(--s-2); }
+.gx-days > li { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-4); border-radius: var(--r-sm); background: var(--p-surface); font-size: var(--t-body); color: var(--ink); }
+.gx-days b { font-weight: 500; }
+.gx-days i { font-style: normal; font-variant-numeric: tabular-nums; color: var(--muted); }
+.gx-chip { justify-self: start; display: inline-flex; align-items: center; height: 32px; padding: 0 var(--s-3); border-radius: 999px; border: 1px solid var(--line-strong); font-size: var(--t-label); font-weight: 500; color: var(--ink); }
+/* at rest (tablet, phone, reduced motion) a step's screen keeps its own height, never cut by a 4:3 box */
+#como-funciona:not(.is-live) .mo-pc__visual--lit { aspect-ratio: auto; }
+@media (max-width: 1023px) {
+  .gx-app { padding: var(--s-3) var(--s-4); gap: var(--s-2); }
+  .gx-app__head { padding-bottom: var(--s-2); }
+  .gx-check > li { padding: var(--s-2) 0; }
+  .gx-days > li { padding: var(--s-2) var(--s-3); }
+  .gx-msg { padding: var(--s-2) var(--s-3); }
+}
+@media (max-width: 639px) {
+  /* a phone keeps each screen's first lines: two messages, three rows, no chip */
+  .gx-chat > :nth-child(n+3), .gx-check > :nth-child(n+3), .gx-days > :nth-child(n+3), .gx-chip { display: none; }
+  .gx-check > li:nth-child(2) { border-bottom: 0; }
+}
+/* the moment's section at rest stays on its two screens (layout-v4.md: one or two screens, at the tablet too) */
+@media (min-width: 640px) and (max-width: 1023px) { main > #como-funciona[data-moment]:not(.is-live) { height: calc(2 * 100svh); min-height: 0; } }
+@media (max-width: 639px) { main > #como-funciona[data-moment]:not(.is-live) { height: auto; min-height: calc(2 * 100lvh); } }
+
+/* the team: three portraits on span-4, square on the desktop so the row holds one screen, 4:5 on the tablet, 4:3 on a phone */
+.team { align-items: stretch; }
+.team .tile { --tile-ratio: 1 / 1; }
+.team .tile__media > img { object-position: 50% 22%; }
+/* three people stay three across on the tablet and stack on a phone: the kit's two-up rule would leave the third
+   portrait alone across a whole row */
+@media (min-width: 640px) and (max-width: 1023px) { #equipe .team > .tile { --tile-ratio: 4 / 5; grid-column: auto / span 4; } }
+@media (max-width: 639px) {
+  #equipe .team > .tile { --tile-ratio: 4 / 3; grid-column: 1 / -1; }
+  #equipe .team .tile__media > img { object-position: 50% 18%; }
+}
+
+/* the exercise library (here and on exercicios.html): region filters, then the exercises as ruled rows */
+.exlib { --c-pad: var(--s-6); background: var(--p-surface); border: 0; border-radius: var(--r-lg); padding: var(--s-6); display: grid; gap: var(--s-5); align-content: start; }
+.exlib__filters { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.exlib__filter { height: 44px; padding: 0 var(--s-4); border-radius: 999px; border: 1px solid var(--line-strong); background: var(--p-bg); color: var(--ink); font: 500 var(--t-small)/1 var(--font-text); cursor: pointer; }
+.exlib__filter[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--p-bg); }
+.exlib__list { display: grid; }
+.exlib__item { display: grid; gap: var(--s-1); padding: var(--s-4) 0; border-bottom: 1px solid var(--line); }
+.exlib__item:first-child { padding-top: 0; }
+.exlib__item:last-child { border-bottom: 0; padding-bottom: 0; }
+.exlib__item > h3 { font: 500 var(--t-card)/1.3 var(--font-text); letter-spacing: -0.01em; }
+.exlib__meta { font-size: var(--t-label); font-weight: 500; color: var(--muted); }
+.exlib__item > p:not(.exlib__meta) { color: var(--ink); max-width: 60ch; }
+.exlib--preview .exlib__filters > :nth-child(n+5) { display: none; }
+@media (max-width: 639px) { .exlib { padding: var(--s-5); } }
+
+/* the booking form on the surface ground, 48px in (sections-library.md, booking-form) */
+.booking { background: var(--p-surface); border-radius: var(--r-lg); padding: var(--s-7); display: grid; gap: var(--s-5); }
+.booking .field { align-content: start; }
+.booking .field :is(input, select) { background-color: var(--p-bg); }
+.field__hint { font-size: var(--t-label); font-weight: 400; color: var(--muted); margin-top: calc(-1 * var(--s-1)); }
+.booking__after { display: grid; gap: var(--s-3); padding-top: var(--s-4); border-top: 1px solid var(--line); }
+.booking__after[hidden] { display: none; }
+.areas { display: grid; gap: var(--s-4); }
+@media (max-width: 639px) { .booking { padding: var(--s-5); } }
+
+/* the footer's one social mark */
+.socials a { display: inline-grid; place-items: center; width: 44px; height: 44px; color: var(--ink); }
+.social-ic { --ic-s: 22px; display: block; height: 22px; -webkit-mask-image: url("../icons/instagram.svg"); mask-image: url("../icons/instagram.svg"); }
+
+/* step numbers in the chapter titles: the order is the content */
+#como-funciona .mo-pc__step h3 { display: flex; align-items: center; gap: var(--s-3); }
+#como-funciona .step-num { flex: none; width: 28px; height: 28px; font-size: var(--t-label); }
+
+/* the FAQ's open answers (details kept open: no accordion) */
+.faq summary { font: 500 var(--t-lead)/1.4 var(--font-text); }
+
+/* a text link led by a real app icon */
+.link--icon { display: inline-flex; align-items: center; gap: var(--s-3); justify-self: start; }
+.link--icon img { width: 24px; height: 24px; flex: none; }
+
+/* the exercise names */
+.exlib__name { font: 500 var(--t-card)/1.3 var(--font-text); letter-spacing: -0.01em; color: var(--ink); }
+
+/* the tablet (640-1023): the specialities take two screens, the list on the first and the triage on the second
+   (layout-v4.md: one or two screens, the second group starting --padt under the second screen's top) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  #especialidades { --h: 2; }
+  #especialidades > .wrap.grid { grid-template-rows: calc(100svh - var(--padt) - var(--padb)) auto; row-gap: calc(var(--padt) + var(--padb)); align-content: start; }
+  #especialidades .grid > .span-6 { align-self: start; }
+  .booking { padding: var(--s-6); }
+}
+
+/* the team's names: the tile's title line */
+.tile__name { font: 500 var(--t-card)/1.3 var(--font-text); letter-spacing: -0.01em; color: var(--ink); }
+
+/* a phone: the FAQ and the exercise preview each hold one screen (layout-v4.md: cut the phone copy) */
+@media (max-width: 639px) {
+  #duvidas .section-head > p, #exercicios .section-head > p { display: none; }
+  #duvidas .faq > :is(.faq__item, details) { padding: var(--s-3) 0; }
+  #duvidas .faq > :is(.faq__item, details):first-child { padding-top: 0; }
+  #duvidas .faq__item--desk { display: none; }
+  .exlib--preview .exlib__item:nth-child(n+3) { display: none; }
+  .exlib--preview .exlib__item:nth-child(2) { border-bottom: 0; padding-bottom: 0; }
+}
+
+/* a phone: the hero photograph shows the face; the fact card stays off it */
+@media (max-width: 639px) { .hero--split .ly-float { display: none; } }
+@media (max-width: 639px) {
+  .nav__logo img { height: 24px; }
+  #como-funciona .mo-pc__steps { gap: var(--s-4); }
+  #como-funciona .mo-pc__visual { margin-top: var(--s-3); }
+  .gx-app { padding: var(--s-3); }
+}
